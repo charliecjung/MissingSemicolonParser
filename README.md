@@ -1,4 +1,4 @@
-<h1> Duplicate Parser <h1>
+<h1> Duplicate Parser </h1>
 
 Hello everyone,
 
