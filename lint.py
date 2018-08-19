@@ -16,7 +16,6 @@ if sys.version_info[0] == 3:
 filePath = user_input 
 chosenChar = input("Input the character you would like to check: ")
 print("File name: " + filePath)
-count = 0
 fileData = ""
 finalMessage = ""
 with open(filePath, "r") as fp:
@@ -25,21 +24,17 @@ with open(filePath, "r") as fp:
         print(fileData[i])
     for i in range(len(fileData)):
         startingChar = 0
-        fileData[i] = fileData[i].strip()
-            while startingChar < len(fileData[i]):
-                if fileData[i][startingChar] == chosenChar:
-                    if fileData[i][startingChar+1] == chosenChar:
-                        finalMessage += fileData[i][startingChar] 
-                        startingChar += 1
-                        if fileData[i][startingChar] == chosenChar:
-                            continue
-                    else:
-                        finalMessage += fileData[i][startingChar]                        
-                else:
- 
+        while startingChar < len(fileData[i])-1:
+            if fileData[i][startingChar] == chosenChar:
+                if fileData[i][startingChar+1] == chosenChar:
+                    count = 0
+                    currentPosition = startingChar
+                    while (fileData[i][currentPosition] == chosenChar):
+                        count += 1 
+                        currentPosition += 1 
+                    fileData[i] = fileData[i][:startingChar+1] + fileData[i][(startingChar+count):]
                     finalMessage += fileData[i][startingChar]
-                startingChar += 1 
-    fileData[i] = finalMessage
+            startingChar += 1 
 with open(filePath, "w") as fp:
     for i in range(len(fileData)):
         fp.write(fileData[i])
