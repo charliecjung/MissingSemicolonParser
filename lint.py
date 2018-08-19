@@ -16,22 +16,31 @@ if sys.version_info[0] == 3:
 filePath = user_input 
 chosenChar = input("Input the character you would like to check: ")
 print("File name: " + filePath)
-with open(filePath, "r+") as fp:
-    line = fp.readline()
-    if line == "":
-        print("File is empty. Terminating program.")
-        sys.exit(0)
-    count = 1
-    while line:
-        print("Line " + str(count) + ": " + line)
-        numOfChars = line.count(chosenChar)
-        print("This line has " + str(numOfChars) + "matches!")
-        if numOfChars > 1:
-            startingChar = 0
-            endingChar = len(line)
-            if line.find(chosenChar, startingChar, endingChar) != -1: 
-                tempString = line[:(line.find(chosenChar) + 1)] 
-                print("TempString: " + tempString)
-                fp.write(tempString)
-        line = fp.readline()
-        count += 1
+count = 0
+fileData = ""
+finalMessage = ""
+with open(filePath, "r") as fp:
+    fileData = fp.readlines()
+    for i in range(len(fileData)):
+        print(fileData[i])
+    for i in range(len(fileData)):
+        startingChar = 0
+        fileData[i] = fileData[i].strip()
+            while startingChar < len(fileData[i]):
+                if fileData[i][startingChar] == chosenChar:
+                    if fileData[i][startingChar+1] == chosenChar:
+                        finalMessage += fileData[i][startingChar] 
+                        startingChar += 1
+                        if fileData[i][startingChar] == chosenChar:
+                            continue
+                    else:
+                        finalMessage += fileData[i][startingChar]                        
+                else:
+ 
+                    finalMessage += fileData[i][startingChar]
+                startingChar += 1 
+    fileData[i] = finalMessage
+with open(filePath, "w") as fp:
+    for i in range(len(fileData)):
+        fp.write(fileData[i])
+        
