@@ -14,7 +14,7 @@ if sys.version_info[0] == 3:
     except ValueError as e:
         print(e)
 filePath = user_input 
-chosenChar = input("Input the character you would like to check: ")
+#chosenChar = input("Input the character you would like to check: ")
 print("File name: " + filePath)
 fileData = ""
 finalMessage = ""
@@ -25,8 +25,8 @@ with open(filePath, "r") as fp:
     for i in range(len(fileData)):
         startingChar = 0
         while startingChar < len(fileData[i])-1:
-            if fileData[i][startingChar] == chosenChar:
-                if fileData[i][startingChar+1] == chosenChar:
+            if (fileData[i][startingChar] == fileData[i][startingChar+1]): 
+                    chosenChar = fileData[i][startingChar]
                     count = 0
                     currentPosition = startingChar
                     while (fileData[i][currentPosition] == chosenChar):
