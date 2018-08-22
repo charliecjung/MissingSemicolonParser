@@ -43,28 +43,28 @@ Line [0]: aaaa
 We have found 4 match(es) on this line of the character: a
 Your line will be changed to this: a
 
-Would you like to use the following changes (y/n): y
+Would you like to use the following changes (y/n): n
 
-Your line has been changed to: a
+Your line has remained: aaaa
 
 Original Message: ;;;
 
 file data: ;
 
 Line [1]: ;;;
-We have found 3 match(es) on this line of the character: ;
+We have found 7 match(es) on this line of the character: ;
 Your line will be changed to this: ;
 
-Would you like to use the following changes (y/n): y
+Would you like to use the following changes (y/n): n
 
-Your line has been changed to: ;
+Your line has remained: ;;;
 
 Original Message: bbbb
 
 file data: b
 
 Line [2]: bbbb
-We have found 4 match(es) on this line of the character: b
+We have found 11 match(es) on this line of the character: b
 Your line will be changed to this: b
 
 Would you like to use the following changes (y/n): y
@@ -108,19 +108,18 @@ Would you like to use the following changes (y/n): y
 Your line has been changed to: ;
 
 We have stripped duplicating characters from test1.txt. We hope to see you again! :)
+Output:
 
-
-</pre></code>
-
-
-
-
-Final Result:
 <pre><code>
-a
-;
+
+aaaa
+;;;
 b
 ;
 c
 ;
+
+
+
+
 </code></pre>
