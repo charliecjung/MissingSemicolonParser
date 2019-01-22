@@ -4,24 +4,36 @@
 
 
 int main(int argc, char** argv) {
-    std::string filePath = "";
-    if (argc > 1) {
-        filePath = argv[1];
-    } else if(argc == 1) {
-       std::cout << "Please enter the following text file you would like to modify: ";
-       std::cin >> filePath; 
+    std::string filePath;
 
-    }    
-    std::cout << "Printing contents of: " << filePath;
-    std::string currentLine = "";
-    std::ifstream myFile (filePath.c_str());
-    if (myFile.is_open()) {
-        while ( (std::getline (myFile, currentLine))) {
-            std::cout << currentLine << "\n";
-        } 
+    if(argc != 2) {
+        std::cout << "Usage: ./lint path/to/file" << std::endl;
+        return 1;
     }
-    else {
-       std::cout << "Could not print file"; 
+
+    filePath = argv[1];
+
+    std::cout << "Displaying contents of: " << filePath << std::endl;
+
+    readAndDisplayFile(filePath);
+    return 0;
+}
+
+/*
+    Reads and displays file with name `filename`.
+*/
+void readAndDisplayFile(std::string filename) {
+    std::fstream myFile(filename.c_str());
+
+    if (!myFile.is_open()) {
+        std::cout << "Could not open file." << std::endl;
+        return;
     }
+
+    std::string currentLine;
+    while ((std::getline (myFile, currentLine))) {
+        std::cout << currentLine;
+    } 
+
     myFile.close();
 }
