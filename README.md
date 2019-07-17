@@ -1,37 +1,56 @@
-<h1> Duplicate Parser </h1>
-
-Hello everyone,
+# Duplicate Parser
 
 
 This repository contains:
 
-lint.py - which checks for duplicate characters in a string. (Y/N confirmation for stripping away duplicates)
-test<#>.txt - test files which I tested my parser on.
+lint.py - checks for runs of repeated characters in a string. (Y/N confirmation for stripping away duplicates)
+examples/test<#>.txt - test files which I tested my parser on.
 
 
-<h2> Program Usage: </h2>
+## Program Usage:
 
-<h3> From command line: </h3>
-<pre><code>python3 lint.py
--OR-
-python3 lint.py <name of file you want to parse>
-</code></pre>
+```python3 lint.py
+lint.py </path/to/unformatted/file> <path/to/linted/file>
+```
+
+```
+Example:
+python3 source/lint.py examples/test1.txt examples/test1_output.txt
+Line [0]: aaaa
+
+We have found 3 match(es) on this line.
+Your line will be changed to this: a
+
+Would you like to use the following changes (y/n)?
+y
+Your line has been changed to: |a
+|
+
+Line [1]: ;;;
+
+We have found 2 match(es) on this line.
+Your line will be changed to this: ;
+
+Would you like to use the following changes (y/n)?
+y
+Your line has been changed to: |;
+|
+
+Linted file is located at <examples/test1_output.txt>. We hope to see you again! :)
+```
 
 Example:
 test1.txt:
-<pre><code>
-
+```
 aaaa
 ;;;
 bbbb
 ;;;
 cccc
 ;;;;;
-</code></pre>
-    
+```
 
-
-<pre><code>
+```
 python3 lint.py
 Please enter the file you would like to use: test1.txt
 File name: test1.txt
@@ -109,17 +128,13 @@ Your line has been changed to: ;
 
 We have stripped duplicating characters from test1.txt. We hope to see you again! :)
 Output:
+```
 
-<pre><code>
-
+```
 aaaa
 ;;;
 b
 ;
 c
 ;
-
-
-
-
-</code></pre>
+```
